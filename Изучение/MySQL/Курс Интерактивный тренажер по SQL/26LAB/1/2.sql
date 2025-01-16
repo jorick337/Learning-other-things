@@ -1,0 +1,5 @@
+
+
+
+
+SHOW TABLES FROM BD_Yurin_2024;

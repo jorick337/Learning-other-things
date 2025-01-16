@@ -1,0 +1,4 @@
+dept_num,dept_full_name,dept_short_name
+1,"Отдел продаж",Sales
+2,"Отдел маркетинга",Mart
+3,"Отдел гарантийного обслуживания",Cust

@@ -1,0 +1,13 @@
+<data>
+  <row>
+    <idDistributionOfLiterature>1</idDistributionOfLiterature>
+    <Readers_idReaders>1</Readers_idReaders>
+    <Literature_idLiterature>1</Literature_idLiterature>
+    <Literature_ReadingRooms_idReadingRooms>2</Literature_ReadingRooms_idReadingRooms>
+    <Literature_ReadingRooms_Libraries_idLibraries>1</Literature_ReadingRooms_Libraries_idLibraries>
+    <DateOfIssue>чт, 16.06.2022 0:00:00</DateOfIssue>
+    <TimeOfIssue>20:00:00</TimeOfIssue>
+    <ViewOfIssue>2022-06-17</ViewOfIssue>
+    <AvailabilityOfCollateral>Да</AvailabilityOfCollateral>
+  </row>
+</data>

@@ -1,0 +1,16 @@
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\bin\Debug\net7.0-windows\Авторизация.exe
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\bin\Debug\net7.0-windows\Авторизация.deps.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\bin\Debug\net7.0-windows\Авторизация.runtimeconfig.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\bin\Debug\net7.0-windows\Авторизация.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\bin\Debug\net7.0-windows\Авторизация.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.LoginForm.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\refint\Авторизация.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\Авторизация.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Авторизация\obj\Debug\net7.0-windows\ref\Авторизация.dll

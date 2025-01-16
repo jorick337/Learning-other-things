@@ -1,0 +1,117 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema school
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema school
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `school` DEFAULT CHARACTER SET utf8 ;
+USE `school` ;
+
+-- -----------------------------------------------------
+-- Table `school`.`S_teachers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`S_teachers` (
+  `teacher_num` INT NOT NULL,
+  `teacher_surname` VARCHAR(15) NOT NULL,
+  `teacher_name` VARCHAR(15) NOT NULL,
+  `teacher_patronymic` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`teacher_num`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `school`.`S_subjects`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`S_subjects` (
+  `subject_num` INT NOT NULL,
+  `subject_name` VARCHAR(15) NOT NULL,
+  `S_teachers_teacher_num` INT NOT NULL,
+  PRIMARY KEY (`subject_num`),
+  INDEX `fk_S_subjects_S_teachers_idx` (`S_teachers_teacher_num` ASC) VISIBLE,
+  CONSTRAINT `fk_S_subjects_S_teachers`
+    FOREIGN KEY (`S_teachers_teacher_num`)
+    REFERENCES `school`.`S_teachers` (`teacher_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `school`.`S_classrooms`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`S_classrooms` (
+  `classrom_num` INT NOT NULL,
+  `classroom_number` INT NULL,
+  `classroom_name` VARCHAR(15) NULL,
+  `S_subjects_subject_num` INT NOT NULL,
+  PRIMARY KEY (`classrom_num`),
+  INDEX `fk_S_classrooms_S_subjects1_idx` (`S_subjects_subject_num` ASC) VISIBLE,
+  CONSTRAINT `fk_S_classrooms_S_subjects1`
+    FOREIGN KEY (`S_subjects_subject_num`)
+    REFERENCES `school`.`S_subjects` (`subject_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `school`.`S_students`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`S_students` (
+  `student_num` VARCHAR(45) NOT NULL,
+  `student_surname` VARCHAR(15) NOT NULL,
+  `student_name` VARCHAR(15) NOT NULL,
+  `student_patronymic` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`student_num`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `school`.`S_grades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`S_grades` (
+  `grade_num` INT NOT NULL,
+  `grade_of_subject` INT NULL,
+  PRIMARY KEY (`grade_num`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `school`.`Subjects_And_Grades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `school`.`Subjects_And_Grades` (
+  `S_grades_grade_num` INT NOT NULL,
+  `S_subjects_subject_num` INT NOT NULL,
+  `S_students_student_num` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`S_grades_grade_num`, `S_subjects_subject_num`),
+  INDEX `fk_S_grades_has_S_subjects_S_subjects1_idx` (`S_subjects_subject_num` ASC) VISIBLE,
+  INDEX `fk_S_grades_has_S_subjects_S_grades1_idx` (`S_grades_grade_num` ASC) VISIBLE,
+  INDEX `fk_Subjects_And_Grades_S_students1_idx` (`S_students_student_num` ASC) VISIBLE,
+  CONSTRAINT `fk_S_grades_has_S_subjects_S_grades1`
+    FOREIGN KEY (`S_grades_grade_num`)
+    REFERENCES `school`.`S_grades` (`grade_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_S_grades_has_S_subjects_S_subjects1`
+    FOREIGN KEY (`S_subjects_subject_num`)
+    REFERENCES `school`.`S_subjects` (`subject_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Subjects_And_Grades_S_students1`
+    FOREIGN KEY (`S_students_student_num`)
+    REFERENCES `school`.`S_students` (`student_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
