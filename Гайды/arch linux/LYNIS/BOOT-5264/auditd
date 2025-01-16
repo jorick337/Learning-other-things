@@ -1,0 +1,46 @@
+# САМ ДОБАВЛЯЛ:
+# (1) ЗАПРЕЩАЕТ ДОБАВЛЕНИЕ НОВЫХ ПРИВЕЛЕГИЙ
+NoNewPrivileges=true 
+# (2) ЧАСТНЫЙ КАТАЛОГ ДЛЯ ВРЕМЕННЫХ ФАЙЛОВ
+PrivateTmp=true
+# (3) ПРЕДОТВРАЩАЕТ ДОСТУП К ФИЗИЧЕСКИМ УСТРОЙСТВАМ
+PrivateDevices=true 
+# (4) ПРЕДОТВРАЩАЕТ ДОСТУП К ФИЗИЧЕСКИМ УСТРОЙСТВАМ, ЕСЛИ ЭТО ЯВНО НЕ РАЗРЕШЕНО
+DevicePolicy=closed 
+# (5) МОНТИРУЕТ ВСЕ ФАЙЛЫ ТОЛЬКО ДЛЯ ЧТЕНИЯ, ЗА ИМКЛЮЧЕНИЕМ: /dev /proc /sys
+ProtectSystem=strict
+# (6) ДОМАШНИЙ КАТАЛОГ ТОЛКО ДЛЯ ЧТЕНИЯ
+ProtectHome=read-only 
+# (7) ЗАЩИТА ГРУППЫ УПРАВЛЕНИЯ LINUX ОТ ИЗМЕНЕНИЙ
+ProtectControlGroups=true 
+# (8) ПРЕДОТВРАЩАЕТ ЗАГРУЗКУ МОДУЛЕЙ ЯДРА
+ProtectKernelModules=true 
+# (9) ПРЕДОТВРАЩАЕТ ИЗМЕНЕНИЕ НАСТРОЕК ЯДРА
+ProtectKernelTunables=true 
+# (10) ОГРАНИЧИВАЕТ ДОСТУПНЫЕ СЕМЕЙСТВА АДРЕСОВ СОКЕТОВ
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK 
+# (11) ФУНКЦИИ ПРОСТРАНСТВА ИМЕН ОГРАНИЧИВАЮТСЯ
+RestrictNamespaces=true 
+# (12) ЗАЩИТА ОТ АТАКИ ТИПА "ОТКАЗ В ОБСЛУЖИВАНИИ", НЕ ПОХВОЛЯЕТ ВКЛЮЧАТЬ ПОЛИТИКИ ПЛАНИРОВАНИЯ
+RestrictRealtime=true 
+# (13) ЗАПРЕЩАЕТ УСТАНОВКУ SUID ИЛИ GUID ДЛЯ ФАЙЛОВ ИЛИ КАТАЛОГОВ, SUID - РАЗРЕШЕНИЕ ФАЙЛОВОЙ СИСТЕМЫ НА ИСПОЛЬЗОВАНИЕ ИСПОЛНЯЕМОГО ФАЙЛА ОТ ИМЕНИ ВЛАДЕЛЬЦА
+RestrictSUIDSGID=true 
+# (14) ПРЕДОТВРАЩАЕТ СОЗДАНИЕ ИЛИ ИЗМЕНЕНИЕ ОТОБРАЖЕНИЙ ПАМЯТИ КАК ИСПОЛНЯЕМЫХ ФАЙЛОВ
+MemoryDenyWriteExecute=true 
+# (15) ПРЕДОТВРАЩАЕТ ИЗМЕНЕНИЕ НАСТРОЕК ЛИЧНОСТИ ДЛЯ ЭТОГО ПРОЦЕССА
+LockPersonality=true 
+# (16) НЕ ЗАПРЕЩАЕТ ВСЕ ЗАПРОСЫ НА ЗАПИСЬ В АППАРАТНЫЕ ЧАСЫ
+ProtectClock=false 
+# (17) ЗАПРЕЩАЕТ ИЗМЕНЯТЬ ИЛИ РЕАГИРОВАТЬ НА ИЗМЕНЕНИЕ ИМЕНИ ХОСТА
+ProtectHostname=true 
+# (18) ЗАПРЕЩАЕТ ДОСТУП К БУФЕРУ ЖУРНАЛА ЯДРА
+ProtectKernelLogs=true 
+# (19) ЗАПРЕЩАЕТ ДОСТУП К ДОМАШНИМ КАТАЛОГАМ ДРУГИХ ПОЛЬЗОВАТЕЛЕЙ
+PrivateUsers=true 
+# (20) ОТКЛЮЧЕНИЕ РАЗЛИЧНЫХ ПОТЕНЦИАЛЬНО ОПАСТНЫХ ВОЗМОЖНОСТЕЙ, НЕ НУЖНЫЕ БОЛЬШЕНСТВУ СЛУЖБ
+CapabilityBoundingSet=~CAP_LINUX_IMMUTABLE CAP_IPC_LOCK CAP_SYS_CHROOT CAP_BLOCK_SUSPEND CAP_LEASE
+CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SYS_BOOT CAP_SYS_PACCT CAP_SYS_PTRACE CAP_SYS_RAWIO CAP_SYS_TIME CAP_SYS_TTY_CONFIG
+CapabilityBoundingSet=~CAP_WAKE_ALARM CAP_MAC_ADMIN CAP_MAC_OVERRIDE
+CapabilityBoundingSet=~CAP_SETUID CAP_SETGID CAP_SETPCAP CAP_CHOWN CAP_NET_ADMIN
+CapabilityBoundingSet=~CAP_CHOWN CAP_FSETID CAP_SETFCAP
+CapabilityBoundingSet=~CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH CAP_FOWNER CAP_IPC_OWNER

@@ -1,0 +1,4 @@
+CREATE TABLE S_Spec (
+		Kod_spec INT NOT NULL PRIMARY KEY,
+		Name_Spec VARCHAR(50)
+);

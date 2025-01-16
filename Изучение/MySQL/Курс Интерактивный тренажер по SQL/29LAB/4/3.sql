@@ -1,0 +1,5 @@
+
+
+
+DROP VIEW v1;
+SHOW TABLES;

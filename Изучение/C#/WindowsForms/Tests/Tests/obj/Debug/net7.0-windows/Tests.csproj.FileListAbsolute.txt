@@ -1,0 +1,17 @@
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\Tests.exe
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\Tests.deps.json
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\Tests.runtimeconfig.json
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\Tests.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\Tests.pdb
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.csproj.AssemblyReference.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.csproj.GenerateResource.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.AssemblyInfoInputs.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.AssemblyInfo.cs
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.csproj.CoreCompileInputs.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\refint\Tests.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.pdb
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.genruntimeconfig.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\ref\Tests.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\Tests.TestRun.resources

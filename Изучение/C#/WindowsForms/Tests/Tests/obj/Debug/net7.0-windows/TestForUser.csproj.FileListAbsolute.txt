@@ -1,0 +1,57 @@
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.AssemblyReference.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.GenerateResource.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfoInputs.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfo.cs
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.CoreCompileInputs.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.exe
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.deps.json
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.runtimeconfig.json
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\refint\TestForUser.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.genruntimeconfig.cache
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\ref\TestForUser.dll
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.Login.resources
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.ChoiceTests.resources
+C:\Users\Users\Documents\YURIN\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.TestRun.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.exe
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.deps.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.runtimeconfig.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.ChoiceTests.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.Login.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.TestRun.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\refint\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\ref\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.Administration.resources
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.exe
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.deps.json
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.runtimeconfig.json
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\bin\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.Administration.resources
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.ChoiceTests.resources
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.Login.resources
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.TestRun.resources
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\refint\TestForUser.dll
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.pdb
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\TestForUser.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Костя\УЧЕБА\Проекты по C#\Tests\Tests\obj\Debug\net7.0-windows\ref\TestForUser.dll

@@ -1,0 +1,5 @@
+
+
+
+
+SHOW PROCEDURE STATUS WHERE Db='bd_yurin_2024'

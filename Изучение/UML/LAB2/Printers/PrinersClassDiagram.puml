@@ -1,0 +1,46 @@
+@startuml
+abstract class Printers{
+performPrint(// Все принтеры могут печатать\nно различается вид печати)
+view    // Вид печати
+}
+
+class LazerPrinter{
+view // Свой вид печати
+}
+class MatrixPrinter{
+view // Свой вид печати
+}
+class JetPrinter{
+view // Свой вид печати
+}
+class LedPrinter{
+view // Свой вид печати
+}
+
+interface ChangePrint{
+view(// Выбор вида печати)
+}
+
+class Lazer{
+print(// Лазерный вид печати)
+}
+class Matrix{
+print(// Матричный вид печати)
+}
+class Jet{
+print(// Струйный вид печати)
+}
+class Led{
+print(// Светодиодный вид печати)
+}
+
+LazerPrinter -> Printers
+MatrixPrinter -> Printers
+JetPrinter -> Printers
+LedPrinter -> Printers
+Lazer ..> ChangePrint
+Matrix ..> ChangePrint
+Jet ..> ChangePrint
+Led ..> ChangePrint
+ChangePrint -> Printers
+@enduml

@@ -1,0 +1,16 @@
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\bin\Debug\net7.0-windows\AuthorizationForm.exe
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\bin\Debug\net7.0-windows\AuthorizationForm.deps.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\bin\Debug\net7.0-windows\AuthorizationForm.runtimeconfig.json
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\bin\Debug\net7.0-windows\AuthorizationForm.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\bin\Debug\net7.0-windows\AuthorizationForm.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.Form1.resources
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\refint\AuthorizationForm.dll
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.pdb
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\AuthorizationForm.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Костя\Проекты по C#\AuthorizationForm\obj\Debug\net7.0-windows\ref\AuthorizationForm.dll
