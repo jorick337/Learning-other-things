@@ -390,16 +390,87 @@ x = torch.tensor([ [ [0, 1] ] ])    # (1,1,2)
 # (1,1,2) => (1,2,1) = [ [ [0, 1] ] ] => [ [ [0] [1] ] ]
 #print(x.transpose(1,2))
 
+x = torch.randn(3, 5)                   # тензо со случайными значениями гауса
+# permute - меняет случайные оси тензора(для 2D тензоров это как транспонирование)
+#print(x.permute(1, 0) == x.t())         # permute == t
+
+# permute - если задать значения, то оси будут созданы по этим индексам 
+x = torch.randn(2, 3, 5)                # тензор со случайными значениями
+#print(x.permute(2, 0, 1).size())        # torch.Size([5, 2, 3])
+
 #endregion
 
-#region
+#region ЭЛЕМЕНТЫ В ПАМЯТИ
 
+x = torch.randn(2,3,2)   # [ [ [ [v v] [v v] [v v] ] [ [v v] [v v] [v v] ] ] ]
 
+# stride - показывает сколько надо сделать шагов(посмотреть значений), чтобы дойти до
+# следующих элементов этого массива 
+# 6 - [ [v v] [v v] [v v] ] и [ [v v] [v v] [v v] ] - по первой оси
+# 2 - [v v] [v v] [v v] и [v v] [v v] [v v] - по второй оси
+# 1 - v v - по третьей оси
+#print(x.stride())   # (6,2,1)
+
+x = torch.arange(935).view(5,17,11)
+# stride испульзуется в формуле нахождения значения элемента:
+
+# x.stride() = (187,11,1):
+# 17 * 11 - по первой оси(5) располагается столько элементов(11 значений в каждом из
+# 17 столбцов)
+# 11 - у каждого столбца(17) по 11 значений
+# 1 - шаг между значениями(11)
+
+# base - начальный адрес памяти
+# x[i,j,k] = base + stride[0]*i + stride[1]*j + stride[2]*k
+# x[1,1,1] = 187*1 + 11*1 + 1*1 = 199
+#print( x.stride(), x[1,1,1].item() )
+
+# Баг с stride(std): при транспонировании в памяти std путается и 
+# записывается непоследовательно, хотя вызов выводит нужные значения
+# При этом если вызвать y[i,j], то в обеих случаях выводит верное значения из-за base
+# is_contiguius - проверяет условие stride[i]=stride[i+1]*size[i+1] для всех индексов
+# true - непрерывно построчно последовательно, false - нет
+x = torch.arange(6).view(2,3)   # [ [0 1 2] [3 4 5] ] 
+#print(x.stride())               # std = (3,1) - верно
+y = x.t()                       # (2,3) => (3,2) = [ [0 3] [1 4] [2 5] ] 
+#print(x.is_contiguous())        # false
+#print(y.stride())               # std = (1,3) - неверно
+
+# contiguous - делает память последовательной при этом убирая между x и y ссылку 
+y = y.contiguous()
+#print( x.is_contiguous() )      # true
+#print(y.stride())               # std = (2,1) - верно
 
 #endregion
 
-#region
+#region ВЫЧИСЛЕНИЕ НА GPU
 
+# На процессоре  fx8350 это заняло 18-20 секунд
+# x1 = torch.eye(10000)
+# y1 = torch.eye(10000)
+# z1 = x1.mm(y1)
 
+# Использование GPU а не CPU
+# print(torch.cuda.device_count())      # число доступных GPU(0 - номер)
+cpu = torch.device("cpu")
+gpu = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+# На видеокарте NVIDIA GeForce GTX 1050 Ti это заняло 0.04s
+# x1 = torch.eye(10000, device = gpu)
+# y1 = torch.eye(10000, device = gpu)
+# z1 = x1.mm(y1)                         
+
+# Тензоры чаще всего создаются в CPU, затем при помощи to пересылаются в GPU
+# Там GPU их вычисляет и возвращает обратно в CPU
+# x1 = torch.eye(10000).to(gpu)
+# y1 = torch.eye(10000).to(gpu)
+# z1 = x1.mm(y1).to(cpu)                 # 2s
+
+# Посмотреть размер памяти GPU можно следующиим образом
+# from GPUtil import showUtilization as gpu_usage
+# gpu_usage()
+
+# Очистка кеша памяти видеокарты руками:
+torch.cuda.empty_cache()
 
 #endregion
