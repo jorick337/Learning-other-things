@@ -902,13 +902,13 @@ loss = criterion(logits, labels)
 # reduction='mean')
 # Используется после КРОСС-ЭНТРОПИИ для минимизации логарифма вероятности правильного
 # класса(максимизирует правдоподобие)
-# Формула: NLLLOSS(y,y`) = (-yi * log(yi`)) /N, где
+# Формула: NLLLOSS(y,y`) = -1/N * Wyi * log(y`iyi), где
 # yi - истинная метка класса
-# yi` - предсказанная вероятность(от LogSoftMax)
+# log(y`iyi) - предсказанная вероятность(от LogSoftMax)
 # N - число примеров
+# Wyi - вес, применяемый к классу yi
 
-# На вход принимает обработанные через LogSoftMax логиты
-# 
+# На вход принимает обработанные через LogSoftMax логиты, нужно делать это самому
 
 logits = torch.tensor([[1.0, 2.0, 3.0], [1.5, 2.5, 3.5]], dtype=torch.float32)
 labels = torch.tensor([2, 1], dtype=torch.long)
@@ -916,23 +916,182 @@ labels = torch.tensor([2, 1], dtype=torch.long)
 log_softmax = nn.LogSoftmax(dim=1) 
 # Для первой оси это [-2,4 -1,4 -0,4]
 log_probs = log_softmax(logits) 
+#print(log_probs)
 
 criterion = nn.NLLLoss(ignore_index=1)
-# Расчитаем для первого, если yi = [2 1] yi`= [-2,4 -1,4 -0,4]:
-# для первого логита [-2,4 -1,4 -0,4] мы берем 2 индекс([2 1]), то:
-# [0] = -(-0,4)/1 = 0,4
+# Расчитаем для первого, если y`iyi = [-2,4 -1,4 -0,4]; N = 1; Wyi = none, то:
+# -1/N * Wyi * log(y`iyi):
+# [0] равен 2: 
+# log(y`iyi) = -0,4
+# -1/N * -0,4 = 0,4
 loss = criterion(log_probs, labels)
-print(loss)
+#print(loss)
 
 #endregion
 
-#region
+#region ОПТИМИЗАТОРЫ
 
+# Оптимизаторы - алгоритмы, что минимизируют функции потерь в процессе обучения модели
+# Настраивают веса модели так, чтобы уменьшить расхождение между предсказаниями и 
+# истиной
 
+# Общий пример для всех последующих оптимизаторов
+import torch.optim as optim
+
+model = nn.Linear(1, 1)
+
+with torch.no_grad():
+    model.weight = nn.Parameter(torch.tensor([[1.0]]))  # вес w = 1.0(должен 2.0)
+    model.bias = nn.Parameter(torch.tensor([2.0]))      # смещение b = 2.0(должно 3.0)
+
+x = torch.tensor([[1.0], [2.0], [3.0], [4.0]])
+y = torch.tensor([[5.0], [7.0], [9.0], [11.0]]) # Истина это y = 2x+3
+
+criterion = nn.MSELoss()
+
+outputs = model(x)
+loss = criterion(outputs, y)
 
 #endregion
 
-#region
+#region ОПТИМИЗАТОР ADAM
+
+# torch.optim.Adam(params, lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0,
+# amsgrad=False)
+# Расчитывает адаптивную скорость обучения для каждого параметра, используя первый 
+# и второй моменты градиентов по формуле:
+# Wt = Wt-1 - Lr * M(t`)/ ((sqrt(V(t`)) + e), где:
+# Wt - параметр весов или смещения
+# Lr - шаг обучения
+# Mt - первый момент(среднее значение градиетов, с начала равное 0)
+# Vt - второй момент(среднее значение квадратов градиентов, с начала равное 0)
+# e - константа для предотвразения деления на ноль
+# Формулы:
+# Mt` = Mt/1-B1^t - коррекция для Mt
+# Vt` = Vt/1-B2^t - коррекция для Vt
+# Mt = B1*M(t-1) + (1-B1)*G(t) - момент первого порядка
+# Vt = B2*V(t-1) + (1-B2)*G(t)^2 - момент второго порядка
+# # То есть сначала Mt` и Vt` равны 0(при иницилизации)
+# Сначала находим Mt и Vt при Wt равном W[0] - веса
+
+# lr - скорость обучения
+# betas - определяет коэффициенты для моментов B1 и B2 
+# eps - чтобы не делилось на ноль
+# weight_decay - регуляризация L2(сглаживание)
+# optimizer = optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-8)
+
+# Изначальные веса и смещение модели
+# print(model.weight.data)    # 1
+# print(model.bias.data)      # 2
+
+# Обнуляем и вычисляем градиенты
+# optimizer.zero_grad()
+# loss.backward()
+# print(model.weight.data)    # 1
+# print(model.bias.data)      # 2
+# print(model.weight.grad)    # -20
+# print(model.bias.grad)      # -7
+
+# Обновляем параметры весов для W0=1; g1=-20; B1=0,9; B2=0,999; Lr=0,001; e=1e-8
+# Wt = Wt-1 - Lr * M(t`)/ ((sqrt(V(t`)) + e)
+#
+# M(t`) = Mt/1-B1^t:
+# Mt = B1*M(t-1) + (1-B1)*G(t):
+# [0] = 0,9*0 + (1-0,9)*-20 = 0-2 = -2
+# M(t`) = Mt/(1-B1^t) = -2/(1-0,9^1) = -2/0,1 = -20
+#
+# Vt = B2*V(t-1) + (1-B2)*G(t)^2:
+# [0] = 0,999*0 + (1-0,999)*-20^2 = 0,001 * 400 = 0,4
+# V(t`) = Vt/1-B2^t = 0,4/(1-0,999^1) = 0,4/0,001 = 400
+# 
+# Wt = Wt-1 - Lr * M(t`)/ ((sqrt(V(t`)) + e) = 1 - 0,001 * -20/(sqrt(400)+1e-8) = 
+# = 1 + 0,001 * -20/20+1e-8 = 1 + 0,001 = 1,001
+# optimizer.step()
+#print(model.weight.data)
+#print(model.bias.data)
+
+#endregion
+
+#region ОПТИМИЗАТОР ADAGRAD
+
+# torch.optim.Adagrad(params, lr=0.01, lr_decay=0, weight_decay=0, 
+# initial_accumulator_value=0, eps=1e-10)
+# Основан на адаптивных шагах обучения для каждого параметра по формуле
+# Wt = W(t-1) - Lr/ sqrt(G(t)+e) * g(t), где
+# G(t) - накопленная сумма квадратов на шаге t равная:
+# G(t) = G(t-1)+g(t)^2 (при 0 равна 0)
+# g(t) - градиент на шаге t
+
+# При W0=1; g1=-20; Lr=0,001; e=1e-8, то:
+# G(t) = G(t-1)+g(t)^2 = 0-20^2 = 400
+# Wt = W(t-1) - Lr/ sqrt(G(t)+e) * g(t) = 1 - (0,001/ sqrt(400+1e-8))*-20 = 
+# 1-0,001/20*-20 = 1+0,001 = 1,001
+#optimizer = optim.Adagrad(model.parameters(), lr=0.001)
+#optimizer.step()
+#print(model.weight)    # 1.001
+
+#endregion
+
+#region ОПТИМИЗАТОР ADADELTA
+
+# torch.optim.Adadelta(params, lr=1.0, rho=0.9, eps=1e-06, weight_decay=0)
+# Это улучшенная версия ADAGRAD, которая не требует явного выбора скорости обучения 
+# и использует градиенты для нормализации шагов обучения(у ADAGRAD может быть 
+# проблемой то, что накопленные градиенты растут слишком быстро из-за квадрата и 
+# приходиться уменьшать шаги для других параметров)
+# Формула:
+# W(t) = W(t-1) + W(t)`
+# W(t)` = - ( sqrt(E(W(t-1)`^2) + e) / (sqrt(E(gt^2) + e)) ) * gt, где
+# E(W(t-1)`^2) - накопленная сумма квадратов изменнений параметров на предыдущих шагах
+# E(W(t-1)`^2) = p * E(W(t-1)`^2) + (1-p) * W(t-1)`^2
+# E(gt^2) - накопленная сумма квадратов на шаге t(на выбранном шаге)
+# E(gt^2) = p * E(g(t-1)^2) + (1-p) * gt^2, где:
+# p - коэффициент сглаживания(равен 0,9)
+# Начальные E(g(0)^2) = 0; W(0)` = 0
+
+# optimizer = optim.Adadelta(model.parameters())
+
+# optimizer.zero_grad()
+# loss.backward()
+# При W0=1; g1=-20; p=0,9 e=1e-8; E(g(0)^2)=0;  то:
+# W(t) = W(t-1) + W(t)`
+# W(t)` = - ( sqrt(E(W(t-1)`^2) + e) / (sqrt(E(gt^2) + e)) ) * gt
+# E(gt^2) = p * E(g(t-1)^2) + (1-p) * gt^2 = 0,9 * 0 + (1-0,9)*-20^2 = 0+0,1*400 = 40 
+# E(W(t-1)`^2) = p * E(W(t-1)`^2) + (1-p) * W(t-1)^2 = 0,9 * 0 + (1-0,9)*0^2 = 0
+# - ( sqrt(E(W(t-1)`^2) + e) / (sqrt(E(gt^2) + e)) ) * gt = 
+# - ( sqrt(0+1e-8) / sqrt(40+1e-8) ) * -20 = - 0,001 / 6,32 * -20 = -0,00015*-20 =
+# = 0,0031
+# W(t) = 1 + 0,0031 = 1,0031
+# optimizer.step()
+# print(model.weight)    # 1.0031
+
+#endregion
+
+#region ОПТИМИЗАТОР RMSPROP
+
+# torch.optim.RMSprop(params, lr=0.01, alpha=0.99, weight_decay=0, momentum=0, 
+# eps=1e-08, centered=False)
+# Адаптирует шаги обучения для каждого параметра в зависимости от исторической 
+# величины градиента(корректирует шаг обучения в зависимости от величины)
+# Формула: 
+# W(t) = W(t-1) - (Lr/ (sqrt(E(gt^2) + e))) * gt
+# E(gt^2) = B * E(g(t-1)^2) + (1-B)*gt^2, где
+# B - коэффициент сглаживания скользящего среднего градиентов(alpha=0.99)
+
+# optimizer = optim.RMSprop(model.parameters(), lr=0.001)
+
+# optimizer.zero_grad()
+# loss.backward()
+# # При W0=1; g1=-20; B=0,99; e=1e-8; E(g(0)^2)=0; Lr=0,001 то:
+# # W(t) = W(t-1) - (Lr/ (sqrt(E(gt^2) + e))) * gt:
+# # E(gt^2) = B * E(g(t-1)^2) + (1-B)*gt^2 = 0,99 * 0 + (1-0,99)*-20^2 = 0,01*400 = 4
+# # W(t) = 1 - (0,001/sqrt(4))*-20 = 1 - 0,001/2*-20 = 1 + 0,001*10 = 1,01
+# optimizer.step()
+# print(model.weight)
+
+#endregion
+
+#region 
 
 
 
