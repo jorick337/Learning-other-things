@@ -11,7 +11,7 @@ nY = 1  # выход
 
 # Squential - контейнер для последовательного комбинирования слоев модели, где 
 # каждый слой будет применяться по порядку к данным. Это удобный способ создания модели
-model = nn.Sequential(
+modelS = nn.Sequential(
           nn.Linear(nX, nH),    # входной слой
           nn.Sigmoid(),         # активация скрытого слоя
           nn.Linear(nH, nY),    # выходной слой
@@ -161,20 +161,225 @@ epochs = 1000
 
 #endregion
 
-#region
+#region ВЫВОД СТРУКТУРЫ СЕТИ
 
+# Один из наиболее простых способов сделать это:
+#print(model)
 
+# torchinfo - библиотека с функцией summary - в нее передается размерность правильной 
+# формы, на выходе показывает слои, названия и параметры модели
+from torchinfo import summary
+#summary(model, input_size=(1,2))
+
+# Вывести параметры модели при стопочном способе задания(sequential) можно послойно
+# (выглядит очень не удобно):
+# for layer in modelS:
+#     print("***", layer)
+#     for param in layer.parameters():
+#         print(param.data.numpy())
+
+# В общем случае параметры выводятся так:
+# numel - возвращает общее число элементов в тензоре
+# for param in model.parameters():
+#     print(param.numel(), param.size(), param.data.numpy())
+
+# Еще один способ вывода параметров модели через state_dict, где записаны основные 
+# веса, смещения и т.д.
+import numpy as np
+
+# model.state_dict().items() - берет k и v, где k - название, а v - размерность модели
+# prod - выводит общее число элементов по размерности
+# tot = 0
+# for k, v in model.state_dict().items():
+#     pars = np.prod(list(v.shape))   # размерность параметра
+#     tot += pars                     # сумма размерностей параметров
+#     print(f'{k:20s} :{pars:7d}  shape: {tuple(v.shape)} ')
+# print(f"{'total':20s} :{tot:7d}")
+
+# Либо можно изобразить модель рисунком при помощи torchviz
+import torchviz
+
+# Был создан граф при помощи модели и кинутой в него X, переданы параметры(имена) слоев
+# dot = torchviz.make_dot(model(X), params = dict(model.named_parameters()))
+# dot.render("dot_model_graph", format="png")
 
 #endregion
 
-#region
+#region СОХРАНЕНИЕ И ЗАГРУЗКА
 
+# torch.save - сохраняет в бинарном виде любой словарь да же с состоянием модели и 
+# оптимизатором
+import datetime
+  
+state = {'info':      "Это моя сеть",            # описание
+         'date':      datetime.datetime.now(),   # дата и время
+         'model' :    model.state_dict(),        # параметры модели
+         'optimizer': optimizer.state_dict()}    # состояние оптимизатора
+ 
+torch.save(state, 'state.pt')                    # сохраняем файл
 
+# torch.load - загружает сохранненую модель при этом нужно:
+# создать модель и оптимизатор и уже после присвоить им загруженную модель
+# weight_only - при true загрузит только веса, при false все параметры
+state = torch.load('state.pt', weights_only=False)                   
+ 
+# Без разницы, что за параметры, главное инициализация:
+m = TwoLayersNet(2, 5, 1)                        
+optimizer = torch.optim.SGD(m.parameters(),lr=1)
+
+# Загрузка параметров модели и оптимизатора
+m.        load_state_dict(state['model'])
+optimizer.load_state_dict(state['optimizer'])
+
+# Эта информация врят ли будет нужна, но все же если необходимо
+#print(state['info'], state['date'])
 
 #endregion
 
-#region
+#region КЛАСС DATASET
 
+# В PyTorch принято оборачивать обучающие данные в класс, где:
+# __len__ - определяет число примеров
+# __getitem__ - дает пример по индексу
 
+# *args - собирает все доп. позиционные аргументы в кортеж
+# **kwargs - собирает все доп. именованые аргументы в словарь
+class MyDataset(torch.utils.data.Dataset):
+ 
+    def __init__(self, N = 10, *args, **kwargs):
+        super().__init__(*args,**kwargs)
+         
+        self.x = torch.rand(N,1)             
+    
+    # Длина x равна количеству примеров
+    def __len__(self):     
+        return len(self.x)                      
+    
+    # Получить idx-тый пример, где
+    # input - сам x[idx]
+    # target - сам x[idx] * 2
+    def __getitem__(self, idx):                 
+        return {'input' : self.x[idx], 'target' : 2*self.x[idx]}
+
+data = MyDataset()
+ 
+# Выведет случайные значения в input и их умноженные на два значения в target
+#for sample in data:
+#    print(sample)
+
+# Dataset можно передать DataLoader - который автоматически позволяет обучать 
+# свою нейросеть на числе примеров(batch_size)
+# shuffle - нужно ли перемешать данные
+# Сам по себе по сути выполняет ровно то что описано в ОБУЧЕННЫЕ СЕТИ(только 
+# здесь он это делает сам)
+train_loader = torch.utils.data.DataLoader(dataset=data, batch_size=12, shuffle=False)
+
+# for batch in train_loader:                       # получаем батчи для тренировки
+#     print(batch['input'], batch['target'])
+
+#endregion
+
+#region ВЫЧИСЛЕНИЯ НА GPU
+
+# В сравнении с GPU CPU сосет по скорости, поскольку GPU имеет больше 
+# вычислительной скорости(из-за особенностей видеокарт)
+# Тем не менее с маленькими вычислениями лучше справляется CPU, а GPU может замедлить
+gpu = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+cpu = torch.device("cpu")
+# У меня не поддерживается
+#print(gpu)  # Проверка что работает именно то, что надо
+
+# Модель нейро-сети можно отправить на GPU
+model = TwoLayersNet(2, 5, 1)           # экземпляр сети        
+model.to(gpu)                           # отправляем его на GPU
+
+# То же самое можно сделать с обучающими данными(если позволяет память GPU)
+X =  X.to(gpu)
+Y =  Y.to(gpu)
+
+#endregion
+
+#region СОБСТВЕННЫЕ СЛОИ
+
+# Все слои являются наследниками класса nn.Module(по сути нейросеть и слой создаются 
+# из одного класса), пример(линейный слой):
+
+# Parameter - класс параметра модели nn.Module
+import math
+from torch.nn.parameter import Parameter
+
+class My_Linear(nn.Module):
+    
+    def __init__(self, in_F, out_F):
+        super(My_Linear, self).__init__()
+        self.weight = Parameter(torch.Tensor(out_F, in_F))  # Весы
+        self.bias   = Parameter(torch.Tensor(out_F))        # Смещение
+        # Ининциализация параметров иначе случайные будут
+        self.reset_parameters()     
+ 
+    # Инициализация происходит с учетом размера входных данных, что важно для 
+    # нейро-сетей(помогает контролировать значения выхода)
+    def reset_parameters(self):
+        for p in self.parameters():
+            stdv =  1.0 / math.sqrt(p.shape[0]) # Стандартное отклонение от параметра
+            p.data.uniform_(-stdv, stdv)        # Равномерное распределение
+ 
+    # Считает по формуле MYLinear = x@W(t) + B равной формуле Linear, где
+    # x - само значение; W(t) - весы; B - смещение;
+    def forward(self, x):
+        return  x @ self.weight.t() + self.bias 
+
+# Пример использования:
+nX = 2
+nH = 5
+nY = 1
+modelS = nn.Sequential(My_Linear(nX, nH), My_Linear(nH, nY))
+
+#summary(modelS, input_size=(1,2))
+
+#endregion
+
+#region СОБСТВЕННЫЙ ОПТИМИЗАТОР
+
+# Копия простого SGD-оптимизатора
+class SGD(torch.optim.Optimizer):
+     
+    def __init__(self, params, lr=0.1, momentum=0):
+        defaults = dict(lr=lr, momentum=momentum)
+        super(SGD, self).__init__(params, defaults)
+ 
+    @torch.no_grad()        # Шаг без построения градиента
+    def step(self):                
+        for group in self.param_groups:
+            momentum = group['momentum']
+            lr       = group['lr']
+ 
+            for p in group['params']:
+                if p.grad is None:
+                    continue
+                     
+                grad = p.grad
+                 
+                if momentum != 0:
+                    p_state = self.state[p]
+                    if 'momentum_buf' not in p_state:
+                        buf = p_state['momentum_buf'] =  torch.clone(grad)
+                    else:
+                        buf = p_state['momentum_buf']
+                        buf.mul_(momentum).add_( grad )                       
+                    grad = buf
+                     
+                p.add_(grad, alpha = -lr)
+ 
+ 
+optimizer = SGD(model.parameters(), lr=0.1, momentum=0.9)       
+
+# Параметры можно так же менять в процессе обучения
+def adjust_optim(optimizer, epoch):
+    if epoch == 1000:
+        # Смена коэффициента момента B1(смотри оптимизатор ADAM в 4)
+        optimizer.param_groups[0]['betas'] = (0.3, optimizer.param_groups[0]['betas'][1])
+    if epoch > 1000:
+        optimizer.param_groups[0]['lr'] *= 0.9999
 
 #endregion
