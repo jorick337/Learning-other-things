@@ -785,7 +785,7 @@ y = log_softmax(x)
 
 #endregion
 
-#region ФУНКЦИЯ СРЕДНЕКВАДРАТИЧНОЙ ОШИБКИ b
+#region ФУНКЦИЯ СРЕДНЕКВАДРАТИЧНОЙ ОШИБКИ
 
 # nn.MSELoss(size_average=None, reduce=None, reduction='mean')
 # Использует для вычислений функцию потерь на основе средеквадратичной ошибки
