@@ -132,7 +132,7 @@ emb = nn.Embedding(5, 2, padding_idx=1)
 # Пример:
 # emb(X) = [[ 0.5561, -0.1329],[ 0.3771, -0.0645],[ 0.3371, -0.3638]], то
 # N[1] = math.sqrt(0.5561-0.1329) = 0.5718 и т.д.
-emb = nn.Embedding(5, 2, max_norm=3)
+emb = nn.Embedding(5, 2, max_norm=9)
 #print(emb(X))   # tensor([ [s0 s0] [s1  s1] [s2  s2] [s3 s3] [s4 s4] ],
                 # requires_grad=True)
 # norm - выводит тензор с нормализованными значениями от 0 до 3(max_norm=3) для 
@@ -891,7 +891,7 @@ criterion = nn.CrossEntropyLoss(weight=w, ignore_index=1)
 # CEL1 = -log(e^xy/e^xi[2]) = -log(0,66) = 0,41
 # Итого loss[0] = 0,41
 loss = criterion(logits, labels)
-#print(loss)            
+print(loss)            
 #print(criterion.weight)
 
 #endregion
