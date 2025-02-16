@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "oBzvD3V5yC4=",
+  "success": true,
+  "projectFilePath": "/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloApp/HelloApp.csproj",
+  "expectedPackageFiles": [
+    "/home/yurin/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.2/microsoft.aspnetcore.app.ref.9.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

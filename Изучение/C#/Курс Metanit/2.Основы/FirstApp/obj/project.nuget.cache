@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bPaOspBog68=",
+  "success": true,
+  "projectFilePath": "/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/FirstApp.csproj",
+  "expectedPackageFiles": [
+    "/home/yurin/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.2/microsoft.aspnetcore.app.ref.9.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
