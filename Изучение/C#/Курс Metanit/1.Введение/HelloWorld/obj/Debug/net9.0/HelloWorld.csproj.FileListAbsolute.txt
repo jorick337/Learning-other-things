@@ -1,0 +1,15 @@
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/bin/Debug/net9.0/HelloWorld
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/bin/Debug/net9.0/HelloWorld.deps.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/bin/Debug/net9.0/HelloWorld.runtimeconfig.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/bin/Debug/net9.0/HelloWorld.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/bin/Debug/net9.0/HelloWorld.pdb
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.AssemblyInfoInputs.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.AssemblyInfo.cs
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.csproj.CoreCompileInputs.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.sourcelink.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/refint/HelloWorld.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.pdb
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/HelloWorld.genruntimeconfig.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloWorld/obj/Debug/net9.0/ref/HelloWorld.dll

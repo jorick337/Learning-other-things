@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch .NET Core",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloApp/bin/Debug/net9.0/HelloApp.dll",
+            "args": [],
+            "cwd": "/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/1.Введение/HelloApp/bin/Debug/net9.0",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

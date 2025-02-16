@@ -1,0 +1,15 @@
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/bin/Debug/net9.0/FirstApp
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/bin/Debug/net9.0/FirstApp.deps.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/bin/Debug/net9.0/FirstApp.runtimeconfig.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/bin/Debug/net9.0/FirstApp.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/bin/Debug/net9.0/FirstApp.pdb
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.AssemblyInfoInputs.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.AssemblyInfo.cs
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.csproj.CoreCompileInputs.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.sourcelink.json
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/refint/FirstApp.dll
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.pdb
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/FirstApp.genruntimeconfig.cache
+/home/yurin/Рабочий стол/Проекты/Изучение/C#/Курс Metanit/2.Основы/FirstApp/obj/Debug/net9.0/ref/FirstApp.dll
